@@ -1,14 +1,28 @@
 # Actividad-4
 
-## Hash.py
+## Hash.py Hito II
 
 El Archivo Hash.py está perparado para recibir como entrada un string o un texto a mediante SDTIN.
 
-**Ejemplos:**
+**Opciones:**
 
-``echo "actividad-4" | python3 Hash.py``
-
-``python3 Hash.py text.txt``
+>Calcular el hash de un string:
+>>python3 Hash.py -h algun-texto``
+>
+>Calcular el hash para de los strings que están dentro de un archivo txt:
+>>python3 Hash.py -f algun-archivo.txt
+>
+>Calcular el hash y la entropia de un string:
+>>python3 Hash.py -he algun-texto
+>
+>Calcular el hash y la entropia de los strings que están dentro de un archivo txt:
+>>python3 Hash.py -fe algun-archivo.txt
+>
+>Calcular la entropia de un string:
+>>python3 Hash.py -e algun-archivo.txt
+>
+>Calcular la entropia de los strings que están dentro de un archivo txt:
+>>python3 Hash.py -ef algun-archivo.txt
 
 ## rendimiento.py
 
