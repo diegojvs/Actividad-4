@@ -1,4 +1,5 @@
-import fileinput
+import sys
+from math import log
 
 def resolver(numero): # Se realizan operaciones matematicas para mantener el numero ASCII entre 33 y 126
     while numero < 33 or numero > 126:
@@ -24,7 +25,8 @@ def hash(text): # Funcion que calcula el hash
     hashByte = bytearray(25) # Se inicia una lista de bytes
     sum = 0
     for i in text: # Se obtiene el numero ASCII y se obtiene la suma total
-        sum += ord(i) 
+        sum += ord(i)
+        
     if sum > 32 and sum < 127: # Si esta entre 33 y 126 se agrega al primer elemento de la lista
         hashByte[0] = sum
     else: # Si no esta entre esos rangos se llama a una funcion para que retorne un numero entre ese rango
@@ -65,9 +67,66 @@ def hash(text): # Funcion que calcula el hash
     
     return hashByte.decode("utf-8")
 
+def entropia(texto): # Calculo de la entropia mediente la diferencia entre el numero ASCII mas alto y el numero ASCII mas bajo de un texto
+    ordup = 0
+    orddown = 0
+    count = 0
+    for caracter in texto:
+        if count == 0:
+            ordup = ord(caracter)
+            orddown = ord(caracter)
+            count += 1
+        else:
+            if ord(caracter) > ordup:
+                ordup = ord(caracter)
+            elif ord(caracter) < orddown:
+                orddown = ord(caracter)
+    return len(texto)*log(ordup-orddown,2)
+
+
 if __name__ == '__main__':
     data = []
-    for lines in fileinput.input(): # Se carga cada palabra en un arreglo para completar las pruebas
-        data.append(lines.rstrip())
-    for palabra in data:
-        print("Hash: " + hash(palabra) + "\n") # Por cada palabra se calcula un hash
+    if sys.argv[1] == "-h": # Argumento para calcular el hash para un solo texto
+        data.append(sys.argv[2])
+        for palabra in data:
+            print("Hash: " + hash(palabra)) # Por cada palabra se calcula un hash
+    
+    elif sys.argv[1] == "-f": # Argumento para calcular el hash para de los textos que están dentro de un archivo txt
+        with open(sys.argv[2]) as f: # Abre el archivo
+            for line in f:
+                data.append(line.rstrip())
+        for palabra in data:
+            print("Hash: " + hash(palabra)) # Por cada palabra se calcula un hash
+    
+    elif sys.argv[1] == "-he": # Argumento para calcular el hash y la entropia para un solo texto
+        data.append(sys.argv[2])
+        for palabra in data:
+            palabraHash = hash(palabra) # Por cada palabra se calcula un hash
+            print("Hash: " + palabraHash) 
+            print("Entropia: " + str(entropia(palabraHash))) # Calcula e imprime la entropia
+    
+    elif sys.argv[1] == "-fe": # Argumento para calcular el hash y la entropia de los textos que están dentro de un archivo txt
+        with open(sys.argv[2]) as f: # Abre el archivo
+            for line in f:
+                data.append(line.rstrip())
+        for palabra in data:
+            palabraHash = hash(palabra) # Por cada palabra se calcula un hash
+            print("Hash: " + palabraHash)
+            print("Entropia: " + str(entropia(palabraHash))) # Calcula e imprime la entropia
+    
+    elif sys.argv[1] == "-e": # Argumento para calcular la entropia para un solo texto
+        data.append(sys.argv[2])
+        for palabra in data:
+            palabraHash = hash(palabra)
+            print("Entropia: " + str(entropia(palabraHash))) # Calcula e imprime la entropia
+    
+    elif sys.argv[1] == "-ef":# Argumento para calcular la entropia de los textos que están dentro de un archivo txt
+        with open(sys.argv[2]) as f: # Abre el archivo
+            for line in f:
+                data.append(line.rstrip())
+        for palabra in data:
+            palabraHash = hash(palabra)
+            print("Entropia: " + str(entropia(palabraHash))) # Calcula e imprime la entropia
+    
+    else:
+        print("No se uso el formato")
