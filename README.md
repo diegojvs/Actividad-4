@@ -9,7 +9,7 @@ El Archivo Hash.py está perparado para recibir como entrada un string o un text
 >Calcular el hash de un string:
 >>python3 Hash.py -h algun-texto``
 >
->Calcular el hash para de los strings que están dentro de un archivo txt:
+>Calcular el hash para los strings que están dentro de un archivo txt:
 >>python3 Hash.py -f algun-archivo.txt
 >
 >Calcular el hash y la entropia de un string:
@@ -21,7 +21,7 @@ El Archivo Hash.py está perparado para recibir como entrada un string o un text
 >Calcular la entropia de un string:
 >>python3 Hash.py -e algun-archivo.txt
 >
->Calcular la entropia de los strings que están dentro de un archivo txt:
+>Calcular la entropia los strings que están dentro de un archivo txt:
 >>python3 Hash.py -ef algun-archivo.txt
 
 ## rendimiento.py
