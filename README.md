@@ -32,6 +32,10 @@ El archivo rendimiento.py está preparado para recibir un archivo con al menos 8
 
 ``python3 rendimiento.py rockyou.txt``
 
-## Entropía
+## entropia.py
 
-En el archivo Entropía.pdf se encuentra el calculo de la entropía de diferentes algoritmos de hash.
+El archivo entropia.py calcula la entropia de una sola palabra. En el archivo Entropía.pdf se encuentra el calculo de la entropía de diferentes algoritmos de hash.
+
+**Ejemplo:**
+
+``python3 entropia.py hola``
