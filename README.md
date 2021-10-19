@@ -7,7 +7,7 @@ El Archivo Hash.py está perparado para recibir como entrada un string o un text
 **Opciones:**
 
 >Calcular el hash de un string:
->>python3 Hash.py -h algun-texto``
+>>python3 Hash.py -h algun-texto
 >
 >Calcular el hash para los strings que están dentro de un archivo txt:
 >>python3 Hash.py -f algun-archivo.txt
