@@ -83,8 +83,6 @@ def entropia(texto,): # Calculo de la entropia mediente la diferencia entre el n
             if re.search('[0-9]',texto) != None:
                 base += 10
         entropia = len(texto)*log(base,2)    
-    print("base:", base)
-    print("Largo:", len(texto))
     return entropia
 
 
