@@ -1,4 +1,5 @@
 import sys
+import re
 from math import log
 
 def resolver(numero): # Se realizan operaciones matematicas para mantener el numero ASCII entre 33 y 126
@@ -67,21 +68,24 @@ def hash(text): # Funcion que calcula el hash
     
     return hashByte.decode("utf-8")
 
-def entropia(texto): # Calculo de la entropia mediente la diferencia entre el numero ASCII mas alto y el numero ASCII mas bajo de un texto
-    ordup = 0
-    orddown = 0
-    count = 0
-    for caracter in texto:
-        if count == 0:
-            ordup = ord(caracter)
-            orddown = ord(caracter)
-            count += 1
-        else:
-            if ord(caracter) > ordup:
-                ordup = ord(caracter)
-            elif ord(caracter) < orddown:
-                orddown = ord(caracter)
-    return len(texto)*log(ordup-orddown,2)
+def entropia(texto,): # Calculo de la entropia mediente la diferencia entre el numero ASCII mas alto y el numero ASCII mas bajo de un texto
+    entropia = 0
+    base = 0
+    if re.search('[a-f]',texto) != None and re.search('[g-z]',texto) == None:
+        base += 6
+        if re.search('[0-9]',texto) != None:
+            base += 10
+        entropia = len(texto)*log(base,2)
+    elif re.search('[a-zA-Z]',texto) != None:
+        base += 52
+        if re.search('[!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~]',texto) != None:
+            base += 32
+            if re.search('[0-9]',texto) != None:
+                base += 10
+        entropia = len(texto)*log(base,2)    
+    print("base:", base)
+    print("Largo:", len(texto))
+    return entropia
 
 
 if __name__ == '__main__':
