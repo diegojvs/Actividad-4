@@ -27,6 +27,9 @@ def hash(text): # Funcion que calcula el hash
     sum = 0
     for i in text: # Se obtiene el numero ASCII y se obtiene la suma total
         sum += ord(i)
+    
+    if len(text) > 1:
+        sum -= int(ord(text[0])/2)
         
     if sum > 32 and sum < 127: # Si esta entre 33 y 126 se agrega al primer elemento de la lista
         hashByte[0] = sum
