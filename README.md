@@ -1,6 +1,6 @@
 # Actividad-4
 
-## Hash.py Hito II
+## Hash.py
 
 El Archivo Hash.py está perparado para recibir como entrada un string o un texto a mediante SDTIN.
 
@@ -39,3 +39,11 @@ El archivo entropia.py calcula la entropia de una sola palabra. En el archivo En
 **Ejemplo:**
 
 ``python3 entropia.py hola``
+
+## 50hash.py
+
+El archivo está preparado para recibir el archivo rockyou.txt
+
+**Ejemplo:**
+
+``python3 50hash.py rockyou.txt``
